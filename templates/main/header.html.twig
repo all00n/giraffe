@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        <meta charset="UTF-8">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="{{ asset('/css/style.css') }}"/>
+        {% endblock %}
+        
+        {% block javascripts %}         
+            <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/></script>
+            <script defer src="{{ asset('js/main.js')}}"/></script>
+        {% endblock %}
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <div class="container">
+                    <ul  class="menu nav navbar-nav">
+                        <li><a href="{{path('home')}}">Главная</a></li>
+                        {% if user != null %}
+                            <li><a href="{{path('advert.list')}}">Ваши объявления</a></li>
+                            </ul>
+                            <div class="header-right">
+                                <div class="layer1">
+                                    <p style="color:white;">Hello,{{user}}</p>
+                                </div>
+                                <div class="layer2">
+                                    <p><a href="{{path('logout')}}" class="btn btn-default">Выйти</a></p>
+                                </div>
+                            </div>
+                        {% else %}
+                            </ul>
+                            <div class="header-right">
+                                {{ render(controller('App\\Controller\\SecurityController::login')) }}
+                            </div>
+                        {% endif %}
+
+                </div>
+            </div>
+            <div id="content" class="container">

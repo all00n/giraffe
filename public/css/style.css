@@ -1,0 +1,76 @@
+div#header {
+    background: #000;
+}
+
+#header ul a{
+    color: #FFF;
+}
+
+#header ul a:hover, #header ul a.active{
+    background: #717171f5;
+}
+
+.post-container{
+    position: relative;
+    border: 1px solid #ccc;
+    min-height: 200px;
+    margin: 15px 0;
+    padding: 8px;
+    text-align: center;
+    box-shadow: 0 0 32px #16324883;
+}
+
+.post-container h3{
+    margin: -8px -8px 8px -8px;
+    background: #c9c9c94d;
+    height: 40px;
+    line-height: 40px;    
+}
+
+.post-container h3 {
+    position: relative;
+}
+
+.post-container .glyphicon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    font-size: 20px;
+    height: 40px;
+    width: 50px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+form.form-horizontal {
+    max-width: 750px;
+}
+
+div.header-right{
+    float: right;
+    margin-top: 7px;
+}
+
+.layer1 {
+    padding: 5px;
+    float: left
+}
+.layer2 {
+    float: left;
+}
+   
+form.form-horizontal {
+    margin: auto;
+}
+.post-container > div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 6px;
+}
+
+.post-container > div > p {
+    margin: 3px;
+    float: left;
+}

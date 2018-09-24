@@ -1,0 +1,39 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+home:
+    path: /{slug}
+    defaults: { _controller: 'App\Controller\AdvertController::index', slug: null}
+    requirements:
+        slug: '^\d?$'
+
+advert.list:
+    path: /advert/{slug}
+    defaults: { _controller: 'App\Controller\AdvertController::advertList', slug: null}
+    requirements:
+        slug: '^\d?$'
+    
+advert.add:
+    path: /advert/add
+    defaults: { _controller: 'App\Controller\AdvertController::add'}
+    
+advert.show:
+    path: /advert/{slug}
+    defaults: { _controller: 'App\Controller\AdvertController::show'}
+    requirements:
+        slug: '^\d+$'
+        
+advert.edit:
+    path: /advert/edit/{slug}
+    defaults: { _controller: 'App\Controller\AdvertController::edit'}
+    requirements:
+        slug: '^\d+$'
+    
+advert.remove:
+    path: /advert/remove/{slug}
+    defaults: { _controller: 'App\Controller\AdvertController::remove'}
+    requirements:
+        slug: '^\d+$'
+logout:
+    path: /logout

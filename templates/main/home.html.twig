@@ -1,0 +1,30 @@
+{{ render(controller('App\\Controller\\HeaderController::index',{'title':'Главная'})) }}
+
+        <div class="row">
+            {% for advert in adverts %}
+                <div class="col-md-12">
+                    <div class="post-container">
+                        <h3>{{advert.title}} 
+                            
+                        </h3>
+                        <pre>{{advert.description}}</pre>
+                        <div >
+                            <p>{{advert.username}}</p>
+                            <p>{{advert.datetime | date('h:i d.m.Y')}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor%}
+        </div>
+        <div class="block-navigator">
+            <ul class="pagination">
+                {% if navigator.pager > 1 %}
+                    <li class="pager-item"><a href="{{ path('home',{'slug':navigator.pager - 1}) }}"><<</a></li>
+                {% endif %}
+                <li class="active"><a>{{ navigator.pager }}</a></li>
+                {% if navigator.pager * navigator.limit < navigator.total %}
+                    <li class="pager-item"><a href="{{ path('home',{'slug':navigator.pager + 1}) }}">>></a></li>
+                {% endif %}
+            </ul>
+        </div>
+{% include 'main/footer.html.twig'%}

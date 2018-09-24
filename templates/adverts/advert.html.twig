@@ -1,0 +1,30 @@
+{{ render(controller('App\\Controller\\HeaderController::index',{'title':'Ваши объявления'})) }}
+    <a class="btn btn-danger" href="{{path('advert.add')}}" style="margin-top: 10px;">Добавить объявление</a>
+        <div class="row">
+            {% for advert in adverts %}
+                <div class="col-md-12">
+                    <div class="post-container">
+                        <h3>{{advert.title}} 
+                            <a href="{{path('advert.edit',{'slug':advert.id})}}" class="glyphicon glyphicon-pencil" aria-hidden="true"></a> 
+                        </h3>
+                        <pre>{{advert.description}}</pre>
+                        <div>
+                            <p>{{advert.username}}</p>
+                            <p>{{advert.datetime | date('h:i d.m.Y')}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor%}
+        </div>
+        <div class="block-navigator">
+            <ul class="pagination">
+                {% if navigator.pager > 1 %}
+                    <li class="pager-item"><a href="{{ path('advert.list',{'slug':navigator.pager - 1}) }}"><<</a></li>
+                {% endif %}
+                <li class="active"><a>{{ navigator.pager }}</a></li>
+                {% if navigator.pager * navigator.limit < navigator.total %}
+                    <li class="pager-item"><a href="{{ path('advert.list',{'slug':navigator.pager + 1}) }}">>></a></li>
+                {% endif %}
+            </ul>
+        </div>
+{% include 'main/footer.html.twig'%}
